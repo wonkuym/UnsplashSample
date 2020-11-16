@@ -1,0 +1,598 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		957E5DB62562D8850078ECF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957E5DB52562D8850078ECF2 /* AppDelegate.swift */; };
+		957E5DB82562D8850078ECF2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957E5DB72562D8850078ECF2 /* SceneDelegate.swift */; };
+		957E5DBA2562D8850078ECF2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957E5DB92562D8850078ECF2 /* ViewController.swift */; };
+		957E5DBD2562D8850078ECF2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 957E5DBB2562D8850078ECF2 /* Main.storyboard */; };
+		957E5DBF2562D88A0078ECF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 957E5DBE2562D88A0078ECF2 /* Assets.xcassets */; };
+		957E5DC22562D88A0078ECF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 957E5DC02562D88A0078ECF2 /* LaunchScreen.storyboard */; };
+		957E5DCD2562D88A0078ECF2 /* kakao_payTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957E5DCC2562D88A0078ECF2 /* kakao_payTests.swift */; };
+		957E5DD82562D88B0078ECF2 /* kakao_payUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957E5DD72562D88B0078ECF2 /* kakao_payUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		957E5DC92562D88A0078ECF2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 957E5DAA2562D8850078ECF2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 957E5DB12562D8850078ECF2;
+			remoteInfo = "kakao-pay";
+		};
+		957E5DD42562D88B0078ECF2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 957E5DAA2562D8850078ECF2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 957E5DB12562D8850078ECF2;
+			remoteInfo = "kakao-pay";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		957E5DB22562D8850078ECF2 /* kakao-pay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "kakao-pay.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		957E5DB52562D8850078ECF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		957E5DB72562D8850078ECF2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		957E5DB92562D8850078ECF2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		957E5DBC2562D8850078ECF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		957E5DBE2562D88A0078ECF2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		957E5DC12562D88A0078ECF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		957E5DC32562D88A0078ECF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		957E5DC82562D88A0078ECF2 /* kakao-payTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "kakao-payTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		957E5DCC2562D88A0078ECF2 /* kakao_payTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kakao_payTests.swift; sourceTree = "<group>"; };
+		957E5DCE2562D88A0078ECF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		957E5DD32562D88B0078ECF2 /* kakao-payUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "kakao-payUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		957E5DD72562D88B0078ECF2 /* kakao_payUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kakao_payUITests.swift; sourceTree = "<group>"; };
+		957E5DD92562D88B0078ECF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		957E5DAF2562D8850078ECF2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		957E5DC52562D88A0078ECF2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		957E5DD02562D88B0078ECF2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		957E5DA92562D8850078ECF2 = {
+			isa = PBXGroup;
+			children = (
+				957E5DB42562D8850078ECF2 /* kakao-pay */,
+				957E5DCB2562D88A0078ECF2 /* kakao-payTests */,
+				957E5DD62562D88B0078ECF2 /* kakao-payUITests */,
+				957E5DB32562D8850078ECF2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		957E5DB32562D8850078ECF2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				957E5DB22562D8850078ECF2 /* kakao-pay.app */,
+				957E5DC82562D88A0078ECF2 /* kakao-payTests.xctest */,
+				957E5DD32562D88B0078ECF2 /* kakao-payUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		957E5DB42562D8850078ECF2 /* kakao-pay */ = {
+			isa = PBXGroup;
+			children = (
+				957E5DB52562D8850078ECF2 /* AppDelegate.swift */,
+				957E5DB72562D8850078ECF2 /* SceneDelegate.swift */,
+				957E5DB92562D8850078ECF2 /* ViewController.swift */,
+				957E5DBB2562D8850078ECF2 /* Main.storyboard */,
+				957E5DBE2562D88A0078ECF2 /* Assets.xcassets */,
+				957E5DC02562D88A0078ECF2 /* LaunchScreen.storyboard */,
+				957E5DC32562D88A0078ECF2 /* Info.plist */,
+			);
+			path = "kakao-pay";
+			sourceTree = "<group>";
+		};
+		957E5DCB2562D88A0078ECF2 /* kakao-payTests */ = {
+			isa = PBXGroup;
+			children = (
+				957E5DCC2562D88A0078ECF2 /* kakao_payTests.swift */,
+				957E5DCE2562D88A0078ECF2 /* Info.plist */,
+			);
+			path = "kakao-payTests";
+			sourceTree = "<group>";
+		};
+		957E5DD62562D88B0078ECF2 /* kakao-payUITests */ = {
+			isa = PBXGroup;
+			children = (
+				957E5DD72562D88B0078ECF2 /* kakao_payUITests.swift */,
+				957E5DD92562D88B0078ECF2 /* Info.plist */,
+			);
+			path = "kakao-payUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		957E5DB12562D8850078ECF2 /* kakao-pay */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 957E5DDC2562D88B0078ECF2 /* Build configuration list for PBXNativeTarget "kakao-pay" */;
+			buildPhases = (
+				957E5DAE2562D8850078ECF2 /* Sources */,
+				957E5DAF2562D8850078ECF2 /* Frameworks */,
+				957E5DB02562D8850078ECF2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "kakao-pay";
+			productName = "kakao-pay";
+			productReference = 957E5DB22562D8850078ECF2 /* kakao-pay.app */;
+			productType = "com.apple.product-type.application";
+		};
+		957E5DC72562D88A0078ECF2 /* kakao-payTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 957E5DDF2562D88B0078ECF2 /* Build configuration list for PBXNativeTarget "kakao-payTests" */;
+			buildPhases = (
+				957E5DC42562D88A0078ECF2 /* Sources */,
+				957E5DC52562D88A0078ECF2 /* Frameworks */,
+				957E5DC62562D88A0078ECF2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				957E5DCA2562D88A0078ECF2 /* PBXTargetDependency */,
+			);
+			name = "kakao-payTests";
+			productName = "kakao-payTests";
+			productReference = 957E5DC82562D88A0078ECF2 /* kakao-payTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		957E5DD22562D88B0078ECF2 /* kakao-payUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 957E5DE22562D88B0078ECF2 /* Build configuration list for PBXNativeTarget "kakao-payUITests" */;
+			buildPhases = (
+				957E5DCF2562D88B0078ECF2 /* Sources */,
+				957E5DD02562D88B0078ECF2 /* Frameworks */,
+				957E5DD12562D88B0078ECF2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				957E5DD52562D88B0078ECF2 /* PBXTargetDependency */,
+			);
+			name = "kakao-payUITests";
+			productName = "kakao-payUITests";
+			productReference = 957E5DD32562D88B0078ECF2 /* kakao-payUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		957E5DAA2562D8850078ECF2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1220;
+				LastUpgradeCheck = 1220;
+				TargetAttributes = {
+					957E5DB12562D8850078ECF2 = {
+						CreatedOnToolsVersion = 12.2;
+					};
+					957E5DC72562D88A0078ECF2 = {
+						CreatedOnToolsVersion = 12.2;
+						TestTargetID = 957E5DB12562D8850078ECF2;
+					};
+					957E5DD22562D88B0078ECF2 = {
+						CreatedOnToolsVersion = 12.2;
+						TestTargetID = 957E5DB12562D8850078ECF2;
+					};
+				};
+			};
+			buildConfigurationList = 957E5DAD2562D8850078ECF2 /* Build configuration list for PBXProject "kakao-pay" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 957E5DA92562D8850078ECF2;
+			productRefGroup = 957E5DB32562D8850078ECF2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				957E5DB12562D8850078ECF2 /* kakao-pay */,
+				957E5DC72562D88A0078ECF2 /* kakao-payTests */,
+				957E5DD22562D88B0078ECF2 /* kakao-payUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		957E5DB02562D8850078ECF2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				957E5DC22562D88A0078ECF2 /* LaunchScreen.storyboard in Resources */,
+				957E5DBF2562D88A0078ECF2 /* Assets.xcassets in Resources */,
+				957E5DBD2562D8850078ECF2 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		957E5DC62562D88A0078ECF2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		957E5DD12562D88B0078ECF2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		957E5DAE2562D8850078ECF2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				957E5DBA2562D8850078ECF2 /* ViewController.swift in Sources */,
+				957E5DB62562D8850078ECF2 /* AppDelegate.swift in Sources */,
+				957E5DB82562D8850078ECF2 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		957E5DC42562D88A0078ECF2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				957E5DCD2562D88A0078ECF2 /* kakao_payTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		957E5DCF2562D88B0078ECF2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				957E5DD82562D88B0078ECF2 /* kakao_payUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		957E5DCA2562D88A0078ECF2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 957E5DB12562D8850078ECF2 /* kakao-pay */;
+			targetProxy = 957E5DC92562D88A0078ECF2 /* PBXContainerItemProxy */;
+		};
+		957E5DD52562D88B0078ECF2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 957E5DB12562D8850078ECF2 /* kakao-pay */;
+			targetProxy = 957E5DD42562D88B0078ECF2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		957E5DBB2562D8850078ECF2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				957E5DBC2562D8850078ECF2 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		957E5DC02562D88A0078ECF2 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				957E5DC12562D88A0078ECF2 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		957E5DDA2562D88B0078ECF2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		957E5DDB2562D88B0078ECF2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		957E5DDD2562D88B0078ECF2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9ZTHX433EM;
+				INFOPLIST_FILE = "kakao-pay/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "wk.kakao-pay";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		957E5DDE2562D88B0078ECF2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9ZTHX433EM;
+				INFOPLIST_FILE = "kakao-pay/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "wk.kakao-pay";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		957E5DE02562D88B0078ECF2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9ZTHX433EM;
+				INFOPLIST_FILE = "kakao-payTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "wk.kakao-payTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/kakao-pay.app/kakao-pay";
+			};
+			name = Debug;
+		};
+		957E5DE12562D88B0078ECF2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9ZTHX433EM;
+				INFOPLIST_FILE = "kakao-payTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "wk.kakao-payTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/kakao-pay.app/kakao-pay";
+			};
+			name = Release;
+		};
+		957E5DE32562D88B0078ECF2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9ZTHX433EM;
+				INFOPLIST_FILE = "kakao-payUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "wk.kakao-payUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "kakao-pay";
+			};
+			name = Debug;
+		};
+		957E5DE42562D88B0078ECF2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9ZTHX433EM;
+				INFOPLIST_FILE = "kakao-payUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "wk.kakao-payUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "kakao-pay";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		957E5DAD2562D8850078ECF2 /* Build configuration list for PBXProject "kakao-pay" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				957E5DDA2562D88B0078ECF2 /* Debug */,
+				957E5DDB2562D88B0078ECF2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		957E5DDC2562D88B0078ECF2 /* Build configuration list for PBXNativeTarget "kakao-pay" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				957E5DDD2562D88B0078ECF2 /* Debug */,
+				957E5DDE2562D88B0078ECF2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		957E5DDF2562D88B0078ECF2 /* Build configuration list for PBXNativeTarget "kakao-payTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				957E5DE02562D88B0078ECF2 /* Debug */,
+				957E5DE12562D88B0078ECF2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		957E5DE22562D88B0078ECF2 /* Build configuration list for PBXNativeTarget "kakao-payUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				957E5DE32562D88B0078ECF2 /* Debug */,
+				957E5DE42562D88B0078ECF2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 957E5DAA2562D8850078ECF2 /* Project object */;
+}
