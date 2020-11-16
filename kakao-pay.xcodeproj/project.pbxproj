@@ -7,14 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9563ADA62564E5660023F576 /* PhotoSearchResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9563ADA42564E5660023F576 /* PhotoSearchResultsController.swift */; };
+		9563ADB925657DB00023F576 /* PhotosLoadStategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9563ADB825657DB00023F576 /* PhotosLoadStategy.swift */; };
+		9563ADBE25657DEA0023F576 /* PhotosLoader+Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9563ADBD25657DEA0023F576 /* PhotosLoader+Notifications.swift */; };
+		957188F92563D781009B5785 /* PhotosLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957188F82563D781009B5785 /* PhotosLoader.swift */; };
+		9571890A2563D9DB009B5785 /* UnsplashPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957189082563D9DB009B5785 /* UnsplashPhotoCell.swift */; };
+		9571890B2563D9DB009B5785 /* UnsplashPhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 957189092563D9DB009B5785 /* UnsplashPhotoCell.xib */; };
 		957E5DB62562D8850078ECF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957E5DB52562D8850078ECF2 /* AppDelegate.swift */; };
-		957E5DB82562D8850078ECF2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957E5DB72562D8850078ECF2 /* SceneDelegate.swift */; };
-		957E5DBA2562D8850078ECF2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957E5DB92562D8850078ECF2 /* ViewController.swift */; };
 		957E5DBD2562D8850078ECF2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 957E5DBB2562D8850078ECF2 /* Main.storyboard */; };
 		957E5DBF2562D88A0078ECF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 957E5DBE2562D88A0078ECF2 /* Assets.xcassets */; };
 		957E5DC22562D88A0078ECF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 957E5DC02562D88A0078ECF2 /* LaunchScreen.storyboard */; };
 		957E5DCD2562D88A0078ECF2 /* kakao_payTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957E5DCC2562D88A0078ECF2 /* kakao_payTests.swift */; };
 		957E5DD82562D88B0078ECF2 /* kakao_payUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957E5DD72562D88B0078ECF2 /* kakao_payUITests.swift */; };
+		957E5E052562DE1F0078ECF2 /* UnsplashAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957E5E042562DE1F0078ECF2 /* UnsplashAPI.swift */; };
+		957E5E0A256357640078ECF2 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957E5E09256357640078ECF2 /* Request.swift */; };
+		958715C825638BC4001C46C5 /* RequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958715C725638BC4001C46C5 /* RequestTests.swift */; };
+		958715CD25639868001C46C5 /* UnsplashPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958715CC25639868001C46C5 /* UnsplashPhoto.swift */; };
+		958715D225639882001C46C5 /* Pagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958715D125639882001C46C5 /* Pagination.swift */; };
+		958715D725639954001C46C5 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958715D625639954001C46C5 /* PhotosViewController.swift */; };
+		958715E52563A2E0001C46C5 /* PaginationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958715E42563A2E0001C46C5 /* PaginationTests.swift */; };
+		958715ED2563A365001C46C5 /* Pagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958715D125639882001C46C5 /* Pagination.swift */; };
+		95F18F392563EB3700EEBACC /* JSONRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F18F382563EB3700EEBACC /* JSONRequest.swift */; };
+		95F18F5F256413FE00EEBACC /* UnsplashPhotoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F18F5E256413FE00EEBACC /* UnsplashPhotoDetailViewController.swift */; };
+		95F18F6D25641A5400EEBACC /* UnsplashPhotoDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F18F6B25641A5400EEBACC /* UnsplashPhotoDetailCell.swift */; };
+		95F18F6E25641A5400EEBACC /* UnsplashPhotoDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95F18F6C25641A5400EEBACC /* UnsplashPhotoDetailCell.xib */; };
+		95F18F772564A97300EEBACC /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F18F762564A97300EEBACC /* PhotoCell.swift */; };
+		95F18F882564B33D00EEBACC /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F18F872564B33D00EEBACC /* ImageCache.swift */; };
+		95F18F8D2564BAF900EEBACC /* UnsplashSearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F18F8C2564BAF900EEBACC /* UnsplashSearchResults.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,10 +54,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9563ADA42564E5660023F576 /* PhotoSearchResultsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSearchResultsController.swift; sourceTree = "<group>"; };
+		9563ADB825657DB00023F576 /* PhotosLoadStategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosLoadStategy.swift; sourceTree = "<group>"; };
+		9563ADBD25657DEA0023F576 /* PhotosLoader+Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotosLoader+Notifications.swift"; sourceTree = "<group>"; };
+		957188F82563D781009B5785 /* PhotosLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosLoader.swift; sourceTree = "<group>"; };
+		957189082563D9DB009B5785 /* UnsplashPhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashPhotoCell.swift; sourceTree = "<group>"; };
+		957189092563D9DB009B5785 /* UnsplashPhotoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UnsplashPhotoCell.xib; sourceTree = "<group>"; };
 		957E5DB22562D8850078ECF2 /* kakao-pay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "kakao-pay.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		957E5DB52562D8850078ECF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		957E5DB72562D8850078ECF2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		957E5DB92562D8850078ECF2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		957E5DBC2562D8850078ECF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		957E5DBE2562D88A0078ECF2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		957E5DC12562D88A0078ECF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +72,20 @@
 		957E5DD32562D88B0078ECF2 /* kakao-payUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "kakao-payUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		957E5DD72562D88B0078ECF2 /* kakao_payUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kakao_payUITests.swift; sourceTree = "<group>"; };
 		957E5DD92562D88B0078ECF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		957E5E042562DE1F0078ECF2 /* UnsplashAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashAPI.swift; sourceTree = "<group>"; };
+		957E5E09256357640078ECF2 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		958715C725638BC4001C46C5 /* RequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTests.swift; sourceTree = "<group>"; };
+		958715CC25639868001C46C5 /* UnsplashPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashPhoto.swift; sourceTree = "<group>"; };
+		958715D125639882001C46C5 /* Pagination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pagination.swift; sourceTree = "<group>"; };
+		958715D625639954001C46C5 /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
+		958715E42563A2E0001C46C5 /* PaginationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationTests.swift; sourceTree = "<group>"; };
+		95F18F382563EB3700EEBACC /* JSONRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONRequest.swift; sourceTree = "<group>"; };
+		95F18F5E256413FE00EEBACC /* UnsplashPhotoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashPhotoDetailViewController.swift; sourceTree = "<group>"; };
+		95F18F6B25641A5400EEBACC /* UnsplashPhotoDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashPhotoDetailCell.swift; sourceTree = "<group>"; };
+		95F18F6C25641A5400EEBACC /* UnsplashPhotoDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UnsplashPhotoDetailCell.xib; sourceTree = "<group>"; };
+		95F18F762564A97300EEBACC /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
+		95F18F872564B33D00EEBACC /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		95F18F8C2564BAF900EEBACC /* UnsplashSearchResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashSearchResults.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +113,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9563ADB725657D980023F576 /* Loader */ = {
+			isa = PBXGroup;
+			children = (
+				957188F82563D781009B5785 /* PhotosLoader.swift */,
+				9563ADB825657DB00023F576 /* PhotosLoadStategy.swift */,
+				9563ADBD25657DEA0023F576 /* PhotosLoader+Notifications.swift */,
+			);
+			path = Loader;
+			sourceTree = "<group>";
+		};
+		9571890F2563D9E5009B5785 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				958715D625639954001C46C5 /* PhotosViewController.swift */,
+				957189082563D9DB009B5785 /* UnsplashPhotoCell.swift */,
+				957189092563D9DB009B5785 /* UnsplashPhotoCell.xib */,
+				95F18F5E256413FE00EEBACC /* UnsplashPhotoDetailViewController.swift */,
+				95F18F6B25641A5400EEBACC /* UnsplashPhotoDetailCell.swift */,
+				95F18F6C25641A5400EEBACC /* UnsplashPhotoDetailCell.xib */,
+				9563ADA42564E5660023F576 /* PhotoSearchResultsController.swift */,
+				95F18F762564A97300EEBACC /* PhotoCell.swift */,
+				95F18F872564B33D00EEBACC /* ImageCache.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		957E5DA92562D8850078ECF2 = {
 			isa = PBXGroup;
 			children = (
@@ -99,9 +162,10 @@
 		957E5DB42562D8850078ECF2 /* kakao-pay */ = {
 			isa = PBXGroup;
 			children = (
+				9571890F2563D9E5009B5785 /* UI */,
+				9563ADB725657D980023F576 /* Loader */,
+				957E5E032562DD370078ECF2 /* API */,
 				957E5DB52562D8850078ECF2 /* AppDelegate.swift */,
-				957E5DB72562D8850078ECF2 /* SceneDelegate.swift */,
-				957E5DB92562D8850078ECF2 /* ViewController.swift */,
 				957E5DBB2562D8850078ECF2 /* Main.storyboard */,
 				957E5DBE2562D88A0078ECF2 /* Assets.xcassets */,
 				957E5DC02562D88A0078ECF2 /* LaunchScreen.storyboard */,
@@ -114,7 +178,9 @@
 			isa = PBXGroup;
 			children = (
 				957E5DCC2562D88A0078ECF2 /* kakao_payTests.swift */,
+				958715E42563A2E0001C46C5 /* PaginationTests.swift */,
 				957E5DCE2562D88A0078ECF2 /* Info.plist */,
+				958715C725638BC4001C46C5 /* RequestTests.swift */,
 			);
 			path = "kakao-payTests";
 			sourceTree = "<group>";
@@ -126,6 +192,27 @@
 				957E5DD92562D88B0078ECF2 /* Info.plist */,
 			);
 			path = "kakao-payUITests";
+			sourceTree = "<group>";
+		};
+		957E5E032562DD370078ECF2 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				95F18F3D2563EB6400EEBACC /* Request */,
+				957E5E042562DE1F0078ECF2 /* UnsplashAPI.swift */,
+				958715CC25639868001C46C5 /* UnsplashPhoto.swift */,
+				95F18F8C2564BAF900EEBACC /* UnsplashSearchResults.swift */,
+				958715D125639882001C46C5 /* Pagination.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		95F18F3D2563EB6400EEBACC /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				957E5E09256357640078ECF2 /* Request.swift */,
+				95F18F382563EB3700EEBACC /* JSONRequest.swift */,
+			);
+			path = Request;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,8 +318,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95F18F6E25641A5400EEBACC /* UnsplashPhotoDetailCell.xib in Resources */,
 				957E5DC22562D88A0078ECF2 /* LaunchScreen.storyboard in Resources */,
 				957E5DBF2562D88A0078ECF2 /* Assets.xcassets in Resources */,
+				9571890B2563D9DB009B5785 /* UnsplashPhotoCell.xib in Resources */,
 				957E5DBD2562D8850078ECF2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -258,9 +347,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				957E5DBA2562D8850078ECF2 /* ViewController.swift in Sources */,
+				957E5E0A256357640078ECF2 /* Request.swift in Sources */,
+				95F18F8D2564BAF900EEBACC /* UnsplashSearchResults.swift in Sources */,
+				957E5E052562DE1F0078ECF2 /* UnsplashAPI.swift in Sources */,
+				9571890A2563D9DB009B5785 /* UnsplashPhotoCell.swift in Sources */,
+				95F18F5F256413FE00EEBACC /* UnsplashPhotoDetailViewController.swift in Sources */,
+				958715D225639882001C46C5 /* Pagination.swift in Sources */,
+				958715D725639954001C46C5 /* PhotosViewController.swift in Sources */,
+				9563ADB925657DB00023F576 /* PhotosLoadStategy.swift in Sources */,
+				9563ADBE25657DEA0023F576 /* PhotosLoader+Notifications.swift in Sources */,
+				95F18F772564A97300EEBACC /* PhotoCell.swift in Sources */,
 				957E5DB62562D8850078ECF2 /* AppDelegate.swift in Sources */,
-				957E5DB82562D8850078ECF2 /* SceneDelegate.swift in Sources */,
+				95F18F392563EB3700EEBACC /* JSONRequest.swift in Sources */,
+				958715CD25639868001C46C5 /* UnsplashPhoto.swift in Sources */,
+				957188F92563D781009B5785 /* PhotosLoader.swift in Sources */,
+				9563ADA62564E5660023F576 /* PhotoSearchResultsController.swift in Sources */,
+				95F18F882564B33D00EEBACC /* ImageCache.swift in Sources */,
+				95F18F6D25641A5400EEBACC /* UnsplashPhotoDetailCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,6 +372,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				957E5DCD2562D88A0078ECF2 /* kakao_payTests.swift in Sources */,
+				958715ED2563A365001C46C5 /* Pagination.swift in Sources */,
+				958715C825638BC4001C46C5 /* RequestTests.swift in Sources */,
+				958715E52563A2E0001C46C5 /* PaginationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,7 +472,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -421,7 +527,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
