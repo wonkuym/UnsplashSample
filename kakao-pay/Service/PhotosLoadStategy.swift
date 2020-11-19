@@ -11,7 +11,7 @@ class PhotosListStategy: PhotosLoadStategy {
     private var page: Pagination
     
     init() {
-        page = Pagination.firstPage(parameters: ["order_by": "popular"])
+        page = Pagination.firstPage()
     }
     
     func loadNext(_ completion: @escaping (Results?, Error?) -> Void) {

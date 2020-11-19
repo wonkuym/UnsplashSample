@@ -16,9 +16,26 @@ struct DetailEnterContext {
 }
 
 class PhotoDetailViewController: UICollectionViewController {
+    var enterContext: DetailEnterContext? {
+        didSet {
+            needsScrollToInitialPhotoIndex = enterContext?.selectedIndex != nil
+        }
+    }
+    var needsScrollToInitialPhotoIndex: Bool = false
+    var initialPhotoIndexPath: IndexPath? {
+        guard let selectedIndex = enterContext?.selectedIndex else { return nil }
+        return IndexPath(row: selectedIndex, section: 0)
+    }
     
-    var enterContext: DetailEnterContext?
-    private var photos: [UnsplashPhoto] { enterContext?.photosLoader.photos ?? [] }
+    var photos: [UnsplashPhoto] { enterContext?.photosLoader.photos ?? [] }
+    var panGestureInteractionController: PanGestureInteractionController?
+    
+    var currentPhotoImage: UIImage? {
+        guard let currentCell = collectionView.visibleCells.first as? PhotoDetailCell else { return nil }
+        return currentCell.photoView.image
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle { .lightContent }
     
     deinit {
         NotificationCenter.default.removeObserver(self)
@@ -26,7 +43,10 @@ class PhotoDetailViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.register(UINib(nibName: cellReuseIdentifier, bundle: nil), forCellWithReuseIdentifier: cellReuseIdentifier)
+        
+        setupCollectionView()
+        
+        modalPresentationCapturesStatusBarAppearance = true
         
         NotificationCenter.default.addObserver(
             self,
@@ -34,14 +54,23 @@ class PhotoDetailViewController: UICollectionViewController {
             name: PhotosLoader.didLoadNewPhotosNotification,
             object: nil
         )
+        
+        panGestureInteractionController = PanGestureInteractionController(viewController: self)
+    }
+    
+    func setupCollectionView() {
+        collectionView.register(UINib(nibName: cellReuseIdentifier, bundle: nil), forCellWithReuseIdentifier: cellReuseIdentifier)
+        collectionView.backgroundColor = .black
+        collectionView.isPagingEnabled = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if let selectedIndex = enterContext?.selectedIndex {
-            let selectedIndexPath = IndexPath(row: selectedIndex, section: 0)
-            collectionView.scrollToItem(at: selectedIndexPath, at: .centeredHorizontally, animated: false)
+        if needsScrollToInitialPhotoIndex,
+           let initialPhotoIndexPath = initialPhotoIndexPath {
+            needsScrollToInitialPhotoIndex = false
+            collectionView.scrollToItem(at: initialPhotoIndexPath,at: .centeredHorizontally, animated: false)
         }
     }
     
@@ -49,13 +78,11 @@ class PhotoDetailViewController: UICollectionViewController {
         collectionView.reloadData()
     }
     
-    @IBAction func backTapped(_ sender: Any) {
+    func handleEnterContextClose() {
         if  let closeHandler = enterContext?.closeHandler,
             let currentIndexPath = collectionView.indexPathsForVisibleItems.first {
             closeHandler(currentIndexPath.row)
         }
-        
-        dismiss(animated: true, completion: nil)
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -67,12 +94,7 @@ class PhotoDetailViewController: UICollectionViewController {
         enterContext?.photosLoader.loadNextIfNeeded(reachedIndex: lastCellIndexPath.row)
     }
     
-    // MARK: UICollectionViewDataSource
-    
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
+    // MARK: - UICollectionViewDataSource
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return photos.count
     }
@@ -89,9 +111,9 @@ class PhotoDetailViewController: UICollectionViewController {
     }
 }
 
+// MARK: - UICollectionViewDelegateFlowLayout
 extension PhotoDetailViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        // the item height must be less than the height of the UICollectionView minus the section insets top and bottom values, minus the content insets top and bottom values.
-        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height - 300)
+        return collectionView.safeAreaLayoutGuide.layoutFrame.size
     }
 }

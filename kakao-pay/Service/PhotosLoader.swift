@@ -7,6 +7,8 @@
 
 import Foundation
 
+private let loadNextThreshold = 3
+
 protocol PhotosLoadStategy {
     typealias Results = (photos: [UnsplashPhoto], isReachedEnd: Bool)
     
@@ -51,8 +53,6 @@ class PhotosLoader {
     }
     
     func loadNextIfNeeded(reachedIndex: Int) {
-        let loadNextThreshold = 3
-        
         if photos.count - reachedIndex < loadNextThreshold {
             loadNext()
         }

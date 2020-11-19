@@ -15,7 +15,7 @@ enum RequestError: Error {
 
 class Request<T> {
     enum HTTPMethod: String {
-        case get
+        case get, post, put, delete
     }
 
     typealias ResponseMapper = (Data) throws -> T
@@ -77,6 +77,7 @@ class Request<T> {
     
     func cancel() {
         guard let pendingTask = pendingTask else { return }
+        
         pendingTask.cancel()
         self.pendingTask = nil
     }
@@ -108,16 +109,6 @@ class Request<T> {
     }
 }
 
-extension Request: CustomDebugStringConvertible {
-    var debugDescription: String {
-        return [
-            "method: \(method)",
-            "parameters: \(parameters)",
-            "headers: \(headers)"
-        ].joined(separator: "\n")
-    }
-}
-
 extension Request {
     static func jsonRequest<T: Codable>(_ urlString: String, parameters: [String: Any], headers: [String: String]) -> Request<T> {
         return Request<T>(urlString: urlString, parameters: parameters, headers: headers, mapper: { data in
@@ -125,5 +116,15 @@ extension Request {
             jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
             return try jsonDecoder.decode(T.self, from: data)
         })
+    }
+}
+
+extension Request: CustomDebugStringConvertible {
+    var debugDescription: String {
+        return [
+            "method: \(method)",
+            "parameters: \(parameters)",
+            "headers: \(headers)"
+        ].joined(separator: "\n")
     }
 }

@@ -9,7 +9,7 @@ import UIKit
 
 class PhotoCell: UITableViewCell, ImageLoader {
     @IBOutlet weak var photoView: UIImageView!
-
+    
     var pendingRequest: Request<Data>?
     
     var photo: UnsplashPhoto? {

@@ -13,6 +13,11 @@
 		957188F92563D781009B5785 /* PhotosLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957188F82563D781009B5785 /* PhotosLoader.swift */; };
 		9571890A2563D9DB009B5785 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957189082563D9DB009B5785 /* PhotoCell.swift */; };
 		9571890B2563D9DB009B5785 /* PhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 957189092563D9DB009B5785 /* PhotoCell.xib */; };
+		9572F5A92566B99C003D53A6 /* PhotoDetailDismissAnimatedTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9572F5A82566B99C003D53A6 /* PhotoDetailDismissAnimatedTransitioning.swift */; };
+		9572F5AE2566BABE003D53A6 /* PhotoDetailPresentAnimatedTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9572F5AD2566BABE003D53A6 /* PhotoDetailPresentAnimatedTransitioning.swift */; };
+		9572F5B32566C061003D53A6 /* PanGestureInteractionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9572F5B22566C061003D53A6 /* PanGestureInteractionController.swift */; };
+		9572F5BB2567198A003D53A6 /* PhotoDetailPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9572F5BA2567198A003D53A6 /* PhotoDetailPresentationController.swift */; };
+		9576BFAB2567E1E400DD792D /* PhotoDetailPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9576BFAA2567E1E400DD792D /* PhotoDetailPresentable.swift */; };
 		957E5DB62562D8850078ECF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957E5DB52562D8850078ECF2 /* AppDelegate.swift */; };
 		957E5DBD2562D8850078ECF2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 957E5DBB2562D8850078ECF2 /* Main.storyboard */; };
 		957E5DBF2562D88A0078ECF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 957E5DBE2562D88A0078ECF2 /* Assets.xcassets */; };
@@ -59,6 +64,11 @@
 		957188F82563D781009B5785 /* PhotosLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosLoader.swift; sourceTree = "<group>"; };
 		957189082563D9DB009B5785 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		957189092563D9DB009B5785 /* PhotoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoCell.xib; sourceTree = "<group>"; };
+		9572F5A82566B99C003D53A6 /* PhotoDetailDismissAnimatedTransitioning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailDismissAnimatedTransitioning.swift; sourceTree = "<group>"; };
+		9572F5AD2566BABE003D53A6 /* PhotoDetailPresentAnimatedTransitioning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailPresentAnimatedTransitioning.swift; sourceTree = "<group>"; };
+		9572F5B22566C061003D53A6 /* PanGestureInteractionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanGestureInteractionController.swift; sourceTree = "<group>"; };
+		9572F5BA2567198A003D53A6 /* PhotoDetailPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailPresentationController.swift; sourceTree = "<group>"; };
+		9576BFAA2567E1E400DD792D /* PhotoDetailPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailPresentable.swift; sourceTree = "<group>"; };
 		957E5DB22562D8850078ECF2 /* kakao-pay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "kakao-pay.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		957E5DB52562D8850078ECF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		957E5DBC2562D8850078ECF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -126,6 +136,7 @@
 		9571890F2563D9E5009B5785 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				9572F5A42566B10B003D53A6 /* CustomTransition */,
 				958715D625639954001C46C5 /* PhotosViewController.swift */,
 				957189082563D9DB009B5785 /* PhotoCell.swift */,
 				957189092563D9DB009B5785 /* PhotoCell.xib */,
@@ -133,8 +144,20 @@
 				95F18F6B25641A5400EEBACC /* PhotoDetailCell.swift */,
 				95F18F6C25641A5400EEBACC /* PhotoDetailCell.xib */,
 				9563ADA42564E5660023F576 /* PhotoSearchResultsController.swift */,
+				9576BFAA2567E1E400DD792D /* PhotoDetailPresentable.swift */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		9572F5A42566B10B003D53A6 /* CustomTransition */ = {
+			isa = PBXGroup;
+			children = (
+				9572F5BA2567198A003D53A6 /* PhotoDetailPresentationController.swift */,
+				9572F5AD2566BABE003D53A6 /* PhotoDetailPresentAnimatedTransitioning.swift */,
+				9572F5A82566B99C003D53A6 /* PhotoDetailDismissAnimatedTransitioning.swift */,
+				9572F5B22566C061003D53A6 /* PanGestureInteractionController.swift */,
+			);
+			path = CustomTransition;
 			sourceTree = "<group>";
 		};
 		957E5DA92562D8850078ECF2 = {
@@ -341,16 +364,21 @@
 				957E5E052562DE1F0078ECF2 /* UnsplashAPI.swift in Sources */,
 				9571890A2563D9DB009B5785 /* PhotoCell.swift in Sources */,
 				95F18F5F256413FE00EEBACC /* PhotoDetailViewController.swift in Sources */,
+				9572F5A92566B99C003D53A6 /* PhotoDetailDismissAnimatedTransitioning.swift in Sources */,
+				9572F5B32566C061003D53A6 /* PanGestureInteractionController.swift in Sources */,
 				958715D225639882001C46C5 /* Pagination.swift in Sources */,
 				958715D725639954001C46C5 /* PhotosViewController.swift in Sources */,
 				9563ADB925657DB00023F576 /* PhotosLoadStategy.swift in Sources */,
+				9576BFAB2567E1E400DD792D /* PhotoDetailPresentable.swift in Sources */,
 				9563ADBE25657DEA0023F576 /* PhotosLoader+Notifications.swift in Sources */,
 				95F18F772564A97300EEBACC /* ImageLoader.swift in Sources */,
 				957E5DB62562D8850078ECF2 /* AppDelegate.swift in Sources */,
 				958715CD25639868001C46C5 /* UnsplashPhoto.swift in Sources */,
 				957188F92563D781009B5785 /* PhotosLoader.swift in Sources */,
+				9572F5BB2567198A003D53A6 /* PhotoDetailPresentationController.swift in Sources */,
 				9563ADA62564E5660023F576 /* PhotoSearchResultsController.swift in Sources */,
 				95F18F882564B33D00EEBACC /* ImageCache.swift in Sources */,
+				9572F5AE2566BABE003D53A6 /* PhotoDetailPresentAnimatedTransitioning.swift in Sources */,
 				95F18F6D25641A5400EEBACC /* PhotoDetailCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

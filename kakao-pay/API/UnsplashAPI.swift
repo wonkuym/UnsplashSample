@@ -11,6 +11,7 @@ class UnsplashAPI {
     static let shared = UnsplashAPI()
     
     let baseUrlString = "https://api.unsplash.com"
+    let unsplashAccessKey = "EPmrvI5d1ijfTL_TqAkYgItzMxxErflorkC933VhL2Q"
     
     // https://unsplash.com/documentation#photos
     func photos(_ pagination: Pagination) -> Request<[UnsplashPhoto]> {
@@ -26,7 +27,7 @@ class UnsplashAPI {
         let urlString = "\(baseUrlString)\(path)"
         
         let headers: [String: String] = [
-            "Authorization": "Client-ID EPmrvI5d1ijfTL_TqAkYgItzMxxErflorkC933VhL2Q"
+            "Authorization": "Client-ID \(unsplashAccessKey)"
         ]
         
         return .jsonRequest(urlString, parameters: parameters, headers: headers)

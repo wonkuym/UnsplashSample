@@ -8,7 +8,7 @@
 import UIKit
 
 class PhotoDetailCell: UICollectionViewCell, ImageLoader {
-
+    
     @IBOutlet weak var photoView: UIImageView!
     
     var pendingRequest: Request<Data>?
@@ -21,7 +21,6 @@ class PhotoDetailCell: UICollectionViewCell, ImageLoader {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        backgroundColor = .yellow
     }
     
     override func prepareForReuse() {

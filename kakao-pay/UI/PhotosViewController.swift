@@ -9,18 +9,9 @@ import UIKit
 
 private let cellReuseIdentifier = "PhotoCell"
 
-class PhotosViewController: UITableViewController {
+class PhotosViewController: UITableViewController, PhotoDetailPresentable {
     
-    lazy var searchResultsController: PhotoSearchResultsController = {
-        let searchResultsController = PhotoSearchResultsController()
-        
-        searchResultsController.photoSelectHandler = { [weak self] enterContext in
-            self?.showDetail(enterContext)
-        }
-        
-        return searchResultsController
-    }()
-    
+    lazy var searchResultsController = PhotoSearchResultsController()
     var photos: [UnsplashPhoto] { photosLoader.photos }
     var photosLoader: PhotosLoader = PhotosLoader()
     
@@ -66,24 +57,6 @@ class PhotosViewController: UITableViewController {
         tableView.reloadData()
     }
     
-    func showDetail(_ enterContext: DetailEnterContext) {
-        performSegue(withIdentifier: "detailSegue", sender: enterContext)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? UINavigationController,
-           let detailVC = vc.viewControllers.first as? PhotoDetailViewController,
-           let enterContext = sender as? DetailEnterContext {
-            vc.modalPresentationStyle = .overFullScreen
-            detailVC.enterContext = enterContext
-        }
-    }
-    
-    private func scrollToRow(_ row: Int) {
-        let indexPath = IndexPath(row: row, section: 0)
-        tableView.scrollToRow(at: indexPath, at: .middle, animated: false)
-    }
-    
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard let lastCell = tableView.visibleCells.last,
               let lastCellIndexPath = tableView.indexPath(for: lastCell) else {
@@ -93,12 +66,7 @@ class PhotosViewController: UITableViewController {
         photosLoader.loadNextIfNeeded(reachedIndex: lastCellIndexPath.row)
     }
     
-    // MARK: - Table view data source
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
+    // MARK: - TableViewDataSource
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return photos.count
     }
@@ -120,19 +88,20 @@ class PhotosViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        showDetail(
-            DetailEnterContext(
-                photosLoader: photosLoader,
-                selectedIndex: indexPath.row,
-                closeHandler: { [weak self] currentIndex in
-                    self?.scrollToRow(currentIndex)
-                }
-            )
+        let enterContext = DetailEnterContext(
+            photosLoader: photosLoader,
+            selectedIndex: indexPath.row,
+            closeHandler: { [weak self] currentIndex in
+                let indexPath = IndexPath(row: currentIndex, section: 0)
+                self?.tableView.scrollToRow(at: indexPath, at: .middle, animated: false)
+            }
         )
+        
+        showDetail(enterContext)
     }
 }
 
-// MARK: - UISearchBarDelegate Delegate
+// MARK: - UISearchBarDelegate
 extension PhotosViewController: UISearchResultsUpdating, UISearchBarDelegate {
     func updateSearchResults(for searchController: UISearchController) {
         searchController.searchResultsController?.view.isHidden = false

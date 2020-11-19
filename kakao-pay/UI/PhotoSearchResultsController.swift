@@ -9,11 +9,7 @@ import UIKit
 
 private let cellReuseIdentifier = "PhotoCell"
 
-class PhotoSearchResultsController: UITableViewController {
-    
-    typealias PhotoSelectHandler = (DetailEnterContext) -> Void
-    
-    var photoSelectHandler: PhotoSelectHandler?
+class PhotoSearchResultsController: UITableViewController, PhotoDetailPresentable {
     var photos: [UnsplashPhoto] { photosLoader?.photos ?? [] }
     
     var photosLoader: PhotosLoader? {
@@ -54,12 +50,6 @@ class PhotoSearchResultsController: UITableViewController {
         photosLoader.loadNext { [weak self] in self?.tableView.reloadData() }
     }
     
-    private func scrollToRow(_ row: Int) {
-        let indexPath = IndexPath(row: row, section: 0)
-        tableView.scrollToRow(at: indexPath, at: .middle, animated: false)
-    }
-    
-    // TODO: 중복코드
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard let lastCell = tableView.visibleCells.last,
               let lastCellIndexPath = tableView.indexPath(for: lastCell) else {
@@ -69,11 +59,7 @@ class PhotoSearchResultsController: UITableViewController {
         photosLoader?.loadNextIfNeeded(reachedIndex: lastCellIndexPath.row)
     }
     
-    // MARK: - Table view data source
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
+    // MARK: - TableViewDataSource
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return photos.count
@@ -96,16 +82,17 @@ class PhotoSearchResultsController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let photoSelectHandler = photoSelectHandler, let photosLoader = photosLoader {
-            photoSelectHandler(
-                DetailEnterContext(
-                    photosLoader: photosLoader,
-                    selectedIndex: indexPath.row,
-                    closeHandler: { [weak self] currentIndex in
-                        self?.scrollToRow(currentIndex)
-                    }
-                )
-            )
-        }
+        guard let photosLoader = photosLoader else { return }
+        
+        let enterContext = DetailEnterContext(
+            photosLoader: photosLoader,
+            selectedIndex: indexPath.row,
+            closeHandler: { [weak self] currentIndex in
+                let indexPath = IndexPath(row: currentIndex, section: 0)
+                self?.tableView.scrollToRow(at: indexPath, at: .middle, animated: false)
+            }
+        )
+        
+        showDetail(enterContext)
     }
 }
