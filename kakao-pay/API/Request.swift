@@ -13,77 +13,62 @@ enum RequestError: Error {
     case requestFailed(response: HTTPURLResponse, data: Data)
 }
 
-class Request {
-    
+class Request<T> {
     enum HTTPMethod: String {
         case get
     }
+
+    typealias ResponseMapper = (Data) throws -> T
     
     let urlString: String
+    private let method: HTTPMethod = .get
+    private let parameters: [String: Any]
+    private let headers: [String: String]
+    private let mapper: ResponseMapper
+    private var pendingTask: URLSessionDataTask?
     
     var urlStringWithQuery: String {
         return "\(urlString)?\(getQueryString())"
     }
     
-    private let method: HTTPMethod = .get
-    private let parameters: [String: Any]
-    private let headers: [String: String]
-    private var pendingTask: URLSessionDataTask?
-    private var isExecute: Bool {
-        return pendingTask != nil
-    }
-    
-    init(urlString: String, parameters: [String: Any] = [:], headers: [String: String] = [:]) {
+    init(urlString: String, parameters: [String: Any] = [:], headers: [String: String] = [:], mapper: @escaping ResponseMapper) {
         self.urlString = urlString
         self.parameters = parameters
         self.headers = headers
+        self.mapper = mapper
     }
     
-    func execute(
-        completion: @escaping (Data) -> Void = { _ in /* do nothing */ },
-        failure: @escaping (Error) -> Void = { _ in /* do nothing */ },
-        finally: @escaping () -> Void = { /* do nothing */ }
-    ) {
-        _execute(completion: completion, failure: failure, finally: finally)
-    }
-    
-    private func _execute(completion: @escaping (Data) -> Void, failure: @escaping (Error) -> Void, finally: @escaping () -> Void) {
-        let wrapedFinally = { [weak self] in
-            self?.pendingTask = nil
-            finally()
-        }
+    func execute(_ completion: @escaping (T?, Error?) -> Void = { _, _ in }) {
+        guard pendingTask == nil else { return }
         
-        let completionOnMain: (Data) -> Void = { data in
+        let completionOnMain: (T?, Error?) -> Void = { [weak self] data, error in
             DispatchQueue.main.async {
-                completion(data)
-                wrapedFinally()
-            }
-        }
-        
-        let failureOnMain: (Error) -> Void = { error in
-            DispatchQueue.main.async {
-                failure(error)
-                wrapedFinally()
+                completion(data, error)
+                self?.pendingTask = nil
             }
         }
         
         guard let urlRequest = makeURLRequest() else {
-            failureOnMain(RequestError.invalidURL(urlString: urlString))
+            completionOnMain(nil, RequestError.invalidURL(urlString: urlString))
             return
         }
         
         let dataTask = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             guard let data = data, let response = response as? HTTPURLResponse else {
-                failureOnMain(error ?? RequestError.unknown)
+                completionOnMain(nil, error ?? RequestError.unknown)
                 return
             }
             
             guard 200..<300 ~= response.statusCode else {
-                failureOnMain(RequestError.requestFailed(response: response, data: data))
+                completionOnMain(nil, RequestError.requestFailed(response: response, data: data))
                 return
             }
             
-            completionOnMain(data)
+            do {
+                completionOnMain(try self.mapper(data), nil)
+            } catch {
+                completionOnMain(nil, error)
+            }
         }
         
         dataTask.resume()
@@ -130,5 +115,15 @@ extension Request: CustomDebugStringConvertible {
             "parameters: \(parameters)",
             "headers: \(headers)"
         ].joined(separator: "\n")
+    }
+}
+
+extension Request {
+    static func jsonRequest<T: Codable>(_ urlString: String, parameters: [String: Any], headers: [String: String]) -> Request<T> {
+        return Request<T>(urlString: urlString, parameters: parameters, headers: headers, mapper: { data in
+            let jsonDecoder = JSONDecoder()
+            jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
+            return try jsonDecoder.decode(T.self, from: data)
+        })
     }
 }

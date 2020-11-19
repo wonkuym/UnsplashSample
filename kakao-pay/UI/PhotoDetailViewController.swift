@@ -1,5 +1,5 @@
 //
-//  UnsplashPhotoDetailViewController.swift
+//  PhotoDetailViewController.swift
 //  kakao-pay
 //
 //  Created by wonkyum kim on 2020/11/17.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-private let cellReuseIdentifier = "UnsplashPhotoDetailCell"
+private let cellReuseIdentifier = "PhotoDetailCell"
 
 struct DetailEnterContext {
     let photosLoader: PhotosLoader
@@ -15,7 +15,7 @@ struct DetailEnterContext {
     let closeHandler: (Int) -> Void
 }
 
-class UnsplashPhotoDetailViewController: UICollectionViewController {
+class PhotoDetailViewController: UICollectionViewController {
     
     var enterContext: DetailEnterContext?
     private var photos: [UnsplashPhoto] { enterContext?.photosLoader.photos ?? [] }
@@ -27,7 +27,13 @@ class UnsplashPhotoDetailViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.register(UINib(nibName: cellReuseIdentifier, bundle: nil), forCellWithReuseIdentifier: cellReuseIdentifier)
-        NotificationCenter.default.addObserver(self, selector: #selector(photosDidLoad(_:)), name: PhotosLoader.didLoadNewPhotosNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(photosDidLoad(_:)),
+            name: PhotosLoader.didLoadNewPhotosNotification,
+            object: nil
+        )
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -58,9 +64,7 @@ class UnsplashPhotoDetailViewController: UICollectionViewController {
             return
         }
         
-        if photos.count - lastCellIndexPath.row < 3 {
-            enterContext?.photosLoader.loadNext()
-        }
+        enterContext?.photosLoader.loadNextIfNeeded(reachedIndex: lastCellIndexPath.row)
     }
     
     // MARK: UICollectionViewDataSource
@@ -77,7 +81,7 @@ class UnsplashPhotoDetailViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath)
         let photo = photos[indexPath.row]
         
-        if let cell = cell as? UnsplashPhotoDetailCell {
+        if let cell = cell as? PhotoDetailCell {
             cell.photo = photo
         }
         
@@ -85,7 +89,7 @@ class UnsplashPhotoDetailViewController: UICollectionViewController {
     }
 }
 
-extension UnsplashPhotoDetailViewController: UICollectionViewDelegateFlowLayout {
+extension PhotoDetailViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         // the item height must be less than the height of the UICollectionView minus the section insets top and bottom values, minus the content insets top and bottom values.
         return CGSize(width: collectionView.frame.width, height: collectionView.frame.height - 300)

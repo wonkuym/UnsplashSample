@@ -13,22 +13,22 @@ class UnsplashAPI {
     let baseUrlString = "https://api.unsplash.com"
     
     // https://unsplash.com/documentation#photos
-    func photos(_ pagination: Pagination) -> JSONRequest<[UnsplashPhoto]> {
+    func photos(_ pagination: Pagination) -> Request<[UnsplashPhoto]> {
         return makeRequest("/photos", parameters: pagination.toAllParameters())
     }
     
     // https://unsplash.com/documentation#search-photos
-    func searchPhoto(_ pagination: Pagination) -> JSONRequest<UnsplashSearchResults> {
+    func searchPhoto(_ pagination: Pagination) -> Request<UnsplashSearchResults> {
         return makeRequest("/search/photos", parameters: pagination.toAllParameters())
     }
     
-    private func makeRequest<T: Codable>(_ path: String, parameters: [String: Any]) -> JSONRequest<T> {
+    private func makeRequest<T: Codable>(_ path: String, parameters: [String: Any]) -> Request<T> {
         let urlString = "\(baseUrlString)\(path)"
         
         let headers: [String: String] = [
             "Authorization": "Client-ID EPmrvI5d1ijfTL_TqAkYgItzMxxErflorkC933VhL2Q"
         ]
         
-        return JSONRequest(Request(urlString: urlString, parameters: parameters, headers: headers))
+        return .jsonRequest(urlString, parameters: parameters, headers: headers)
     }
 }

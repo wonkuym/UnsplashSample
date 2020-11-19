@@ -7,6 +7,12 @@
 
 import Foundation
 
+protocol PhotosLoadStategy {
+    typealias Results = (photos: [UnsplashPhoto], isReachedEnd: Bool)
+    
+    func loadNext(_ completion: @escaping (Results?, Error?) -> Void)
+}
+
 class PhotosLoader {
     var photos: [UnsplashPhoto]
     private var loadStategy: PhotosLoadStategy
@@ -14,7 +20,7 @@ class PhotosLoader {
     private var isLoading: Bool
     
     convenience init() {
-        self.init(loadStategy: PhotosStategy())
+        self.init(loadStategy: PhotosListStategy())
     }
     
     convenience init(query: String) {
@@ -41,6 +47,14 @@ class PhotosLoader {
             self?.isLoading = false
             
             completion()
+        }
+    }
+    
+    func loadNextIfNeeded(reachedIndex: Int) {
+        let loadNextThreshold = 3
+        
+        if photos.count - reachedIndex < loadNextThreshold {
+            loadNext()
         }
     }
 }

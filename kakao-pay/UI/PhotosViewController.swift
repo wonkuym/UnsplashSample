@@ -7,12 +7,20 @@
 
 import UIKit
 
-private let loadMoreThreshold = 3
-private let cellReuseIdentifier = "UnsplashPhotoCell"
+private let cellReuseIdentifier = "PhotoCell"
 
 class PhotosViewController: UITableViewController {
     
-    let searchResultsController = PhotoSearchResultsController()
+    lazy var searchResultsController: PhotoSearchResultsController = {
+        let searchResultsController = PhotoSearchResultsController()
+        
+        searchResultsController.photoSelectHandler = { [weak self] enterContext in
+            self?.showDetail(enterContext)
+        }
+        
+        return searchResultsController
+    }()
+    
     var photos: [UnsplashPhoto] { photosLoader.photos }
     var photosLoader: PhotosLoader = PhotosLoader()
     
@@ -26,13 +34,14 @@ class PhotosViewController: UITableViewController {
         setupTableView()
         setupSearchController()
         
-        photosLoader.loadNext()
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(photosDidLoad(_:)),
+            name: PhotosLoader.didLoadNewPhotosNotification,
+            object: nil
+        )
         
-        NotificationCenter.default.addObserver(self, selector: #selector(photosDidLoad(_:)), name: PhotosLoader.didLoadNewPhotosNotification, object: nil)
-    }
-    
-    @objc func photosDidLoad(_ notification: Notification) {
-        tableView.reloadData()
+        photosLoader.loadNext()
     }
     
     func setupTableView() {
@@ -42,10 +51,6 @@ class PhotosViewController: UITableViewController {
     }
     
     func setupSearchController() {
-        searchResultsController.photoSelectHandler = { [weak self] enterContext in
-            self?.showDetail(enterContext)
-        }
-        
         let searchController = UISearchController(searchResultsController: searchResultsController)
         searchController.searchResultsUpdater = self
         searchController.searchBar.delegate = self
@@ -57,13 +62,17 @@ class PhotosViewController: UITableViewController {
         definesPresentationContext = true
     }
     
+    @objc func photosDidLoad(_ notification: Notification) {
+        tableView.reloadData()
+    }
+    
     func showDetail(_ enterContext: DetailEnterContext) {
         performSegue(withIdentifier: "detailSegue", sender: enterContext)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? UINavigationController,
-           let detailVC = vc.viewControllers.first as? UnsplashPhotoDetailViewController,
+           let detailVC = vc.viewControllers.first as? PhotoDetailViewController,
            let enterContext = sender as? DetailEnterContext {
             vc.modalPresentationStyle = .overFullScreen
             detailVC.enterContext = enterContext
@@ -81,9 +90,7 @@ class PhotosViewController: UITableViewController {
             return
         }
         
-        if photos.count - lastCellIndexPath.row < loadMoreThreshold {
-            photosLoader.loadNext()
-        }
+        photosLoader.loadNextIfNeeded(reachedIndex: lastCellIndexPath.row)
     }
     
     // MARK: - Table view data source
@@ -100,7 +107,7 @@ class PhotosViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath)
         let photo = photos[indexPath.row]
         
-        if let photoCell = cell as? UnsplashPhotoCell {
+        if let photoCell = cell as? PhotoCell {
             photoCell.photo = photo
         }
         
@@ -127,7 +134,6 @@ class PhotosViewController: UITableViewController {
 
 // MARK: - UISearchBarDelegate Delegate
 extension PhotosViewController: UISearchResultsUpdating, UISearchBarDelegate {
-    
     func updateSearchResults(for searchController: UISearchController) {
         searchController.searchResultsController?.view.isHidden = false
     }

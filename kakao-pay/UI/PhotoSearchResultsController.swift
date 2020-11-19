@@ -7,7 +7,7 @@
 
 import UIKit
 
-private let cellReuseIdentifier = "UnsplashPhotoCell"
+private let cellReuseIdentifier = "PhotoCell"
 
 class PhotoSearchResultsController: UITableViewController {
     
@@ -23,10 +23,6 @@ class PhotoSearchResultsController: UITableViewController {
         }
     }
     
-    var isEmpty: Bool {
-        return photosLoader != nil && photos.isEmpty
-    }
-    
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
@@ -35,11 +31,12 @@ class PhotoSearchResultsController: UITableViewController {
         super.viewDidLoad()
         setupTableView()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(photosDidLoad(_:)), name: PhotosLoader.didLoadNewPhotosNotification, object: nil)
-    }
-    
-    @objc func photosDidLoad(_ notification: Notification) {
-        tableView.reloadData()
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(photosDidLoad(_:)),
+            name: PhotosLoader.didLoadNewPhotosNotification,
+            object: nil
+        )
     }
     
     func setupTableView() {
@@ -48,9 +45,18 @@ class PhotoSearchResultsController: UITableViewController {
         tableView.separatorStyle = .singleLine
     }
     
+    @objc func photosDidLoad(_ notification: Notification) {
+        tableView.reloadData()
+    }
+    
     func loadNext() {
         guard let photosLoader = photosLoader else { return }
         photosLoader.loadNext { [weak self] in self?.tableView.reloadData() }
+    }
+    
+    private func scrollToRow(_ row: Int) {
+        let indexPath = IndexPath(row: row, section: 0)
+        tableView.scrollToRow(at: indexPath, at: .middle, animated: false)
     }
     
     // TODO: 중복코드
@@ -60,9 +66,7 @@ class PhotoSearchResultsController: UITableViewController {
             return
         }
         
-        if photos.count - lastCellIndexPath.row < 3 {
-            loadNext()
-        }
+        photosLoader?.loadNextIfNeeded(reachedIndex: lastCellIndexPath.row)
     }
     
     // MARK: - Table view data source
@@ -79,7 +83,7 @@ class PhotoSearchResultsController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath)
         let photo = photos[indexPath.row]
         
-        if let photoCell = cell as? UnsplashPhotoCell {
+        if let photoCell = cell as? PhotoCell {
             photoCell.photo = photo
         }
         
@@ -103,10 +107,5 @@ class PhotoSearchResultsController: UITableViewController {
                 )
             )
         }
-    }
-    
-    private func scrollToRow(_ row: Int) {
-        let indexPath = IndexPath(row: row, section: 0)
-        tableView.scrollToRow(at: indexPath, at: .middle, animated: false)
     }
 }
