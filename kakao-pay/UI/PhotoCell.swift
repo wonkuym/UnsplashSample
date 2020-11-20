@@ -9,12 +9,14 @@ import UIKit
 
 class PhotoCell: UITableViewCell, ImageLoader {
     @IBOutlet weak var photoView: UIImageView!
+    @IBOutlet weak var userNameLabel: UILabel!
     
     var pendingRequest: Request<Data>?
     
     var photo: UnsplashPhoto? {
         didSet {
             loadImage(to: photoView)
+            userNameLabel.text = photo?.user.name
         }
     }
     

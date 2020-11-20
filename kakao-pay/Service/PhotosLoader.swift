@@ -10,9 +10,9 @@ import Foundation
 private let loadNextThreshold = 3
 
 protocol PhotosLoadStategy {
-    typealias Results = (photos: [UnsplashPhoto], isReachedEnd: Bool)
+    typealias PhotosLoadResult = Result<(photos: [UnsplashPhoto], isReachedEnd: Bool), Error>
     
-    func loadNext(_ completion: @escaping (Results?, Error?) -> Void)
+    func loadNext(_ completion: @escaping (PhotosLoadResult) -> Void)
 }
 
 class PhotosLoader {
@@ -40,14 +40,18 @@ class PhotosLoader {
         guard !isLoading && !isReachedEnd else { return }
         
         isLoading = true
-        loadStategy.loadNext { [weak self] (results, error) in
-            if let results = results {
-                self?.photos.append(contentsOf: results.photos)
-                self?.isReachedEnd = results.isReachedEnd
+        loadStategy.loadNext { [weak self] result in
+            switch result {
+            case .success(let data):
+                self?.photos.append(contentsOf: data.photos)
+                self?.isReachedEnd = data.isReachedEnd
                 NotificationCenter.default.post(name: PhotosLoader.didLoadNewPhotosNotification, object: nil)
+            case .failure(let error):
+                debugPrint(error)
+                break
             }
-            self?.isLoading = false
             
+            self?.isLoading = false
             completion()
         }
     }

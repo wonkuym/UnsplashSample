@@ -14,6 +14,7 @@ struct UnsplashPhoto: Codable {
     let width: Int
     let height: Int
     let urls: UnsplashPhotoUrls
+    let user: UnsplashUser
 }
 
 struct UnsplashPhotoUrls: Codable {
@@ -22,4 +23,9 @@ struct UnsplashPhotoUrls: Codable {
     let regular: String
     let small: String
     let thumb: String
+}
+
+struct UnsplashUser: Codable {
+    let id: String
+    let name: String
 }

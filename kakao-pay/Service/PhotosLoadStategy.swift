@@ -14,17 +14,18 @@ class PhotosListStategy: PhotosLoadStategy {
         page = Pagination.firstPage()
     }
     
-    func loadNext(_ completion: @escaping (Results?, Error?) -> Void) {
+    func loadNext(_ completion: @escaping (PhotosLoadResult) -> Void) {
         let photosRequest = UnsplashAPI.shared.photos(page)
         
-        photosRequest.execute { [weak self] newPhotos, error in
+        photosRequest.execute { [weak self] result in
             guard let self = self else { return }
             
-            if let newPhotos = newPhotos {
-                completion((photos: newPhotos, isReachedEnd: newPhotos.isEmpty), nil)
+            switch result {
+            case .success(let newPhotos):
+                completion(.success((photos: newPhotos, isReachedEnd: newPhotos.isEmpty)))
                 self.page = self.page.nextPage()
-            } else if let error = error {
-                completion(nil, error)
+            case .failure(let error):
+                completion(.failure(error))
             }
         }
         
@@ -39,19 +40,20 @@ class PhotosSearchStategy: PhotosLoadStategy {
         page = Pagination.firstPage(parameters: ["query": query])
     }
     
-    func loadNext(_ completion: @escaping (Results?, Error?) -> Void) {
+    func loadNext(_ completion: @escaping (PhotosLoadResult) -> Void) {
         let photosRequest = UnsplashAPI.shared.searchPhoto(page)
         
-        photosRequest.execute { [weak self] searchResults, error in
+        photosRequest.execute { [weak self] result in
             guard let self = self else { return }
             
-            if let searchResults = searchResults {
+            switch result {
+            case .success(let searchResults):
                 let isReachedEnd = searchResults.totalPages == self.page.page
-                completion((photos: searchResults.results, isReachedEnd: isReachedEnd), nil)
+                completion(.success((photos: searchResults.results, isReachedEnd: isReachedEnd)))
                 
                 self.page = self.page.nextPage()
-            } else if let error = error {
-                completion(nil, error)
+            case .failure(let error):
+                completion(.failure(error))
             }
         }
         

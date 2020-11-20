@@ -22,10 +22,15 @@ extension ImageLoader {
         }
         
         let photoRequest = Request<Data>(urlString: photo.urlString, mapper: { data in data})
-        photoRequest.execute { [weak self] data, error in
-            if let data = data, let image = UIImage(data: data) {
-                ImageCache.shared.cache.setObject(image, forKey: photo.urlString as NSString)
-                imageView.image = image
+        photoRequest.execute { [weak self] result in
+            switch result {
+            case .success(let data):
+                if let image = UIImage(data: data) {
+                    ImageCache.shared.cache.setObject(image, forKey: photo.urlString as NSString)
+                    imageView.image = image
+                }
+            case .failure(let error):
+                debugPrint(error)
             }
             
             self?.pendingRequest = nil

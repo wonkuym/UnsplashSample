@@ -20,17 +20,26 @@
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sGP-7x-Ee6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="171"/>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBr-Sy-jVF">
+                        <rect key="frame" x="24" y="126" width="40" height="18"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="sGP-7x-Ee6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="0Dt-Ic-A6R"/>
                     <constraint firstItem="sGP-7x-Ee6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="1pJ-Un-Zvq"/>
                     <constraint firstAttribute="bottom" secondItem="sGP-7x-Ee6" secondAttribute="bottom" id="OwZ-hB-VgJ"/>
+                    <constraint firstItem="IBr-Sy-jVF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="dVa-Iq-npc"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="IBr-Sy-jVF" secondAttribute="bottom" constant="16" id="jyE-Zt-6AN"/>
                     <constraint firstAttribute="trailing" secondItem="sGP-7x-Ee6" secondAttribute="trailing" id="plt-aU-td5"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="photoView" destination="sGP-7x-Ee6" id="T40-Lo-VGY"/>
+                <outlet property="userNameLabel" destination="IBr-Sy-jVF" id="lVJ-yt-KgA"/>
             </connections>
             <point key="canvasLocation" x="94.927536231884062" y="95.424107142857139"/>
         </tableViewCell>

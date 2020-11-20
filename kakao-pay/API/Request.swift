@@ -17,7 +17,8 @@ class Request<T> {
     enum HTTPMethod: String {
         case get, post, put, delete
     }
-
+    
+    typealias RequestResult = Result<T, Error>
     typealias ResponseMapper = (Data) throws -> T
     
     let urlString: String
@@ -38,36 +39,36 @@ class Request<T> {
         self.mapper = mapper
     }
     
-    func execute(_ completion: @escaping (T?, Error?) -> Void = { _, _ in }) {
+    func execute(_ completion: @escaping (RequestResult) -> Void = { _ in }) {
         guard pendingTask == nil else { return }
         
-        let completionOnMain: (T?, Error?) -> Void = { [weak self] data, error in
+        let completionOnMain: (RequestResult) -> Void = { [weak self] result in
             DispatchQueue.main.async {
-                completion(data, error)
+                completion(result)
                 self?.pendingTask = nil
             }
         }
         
         guard let urlRequest = makeURLRequest() else {
-            completionOnMain(nil, RequestError.invalidURL(urlString: urlString))
+            completionOnMain(.failure(RequestError.invalidURL(urlString: urlString)))
             return
         }
         
         let dataTask = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             guard let data = data, let response = response as? HTTPURLResponse else {
-                completionOnMain(nil, error ?? RequestError.unknown)
+                completionOnMain(.failure(error ?? RequestError.unknown))
                 return
             }
             
             guard 200..<300 ~= response.statusCode else {
-                completionOnMain(nil, RequestError.requestFailed(response: response, data: data))
+                completionOnMain(.failure(RequestError.requestFailed(response: response, data: data)))
                 return
             }
             
             do {
-                completionOnMain(try self.mapper(data), nil)
+                completionOnMain(.success(try self.mapper(data)))
             } catch {
-                completionOnMain(nil, error)
+                completionOnMain(.failure(error))
             }
         }
         
