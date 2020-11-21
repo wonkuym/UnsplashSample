@@ -64,7 +64,7 @@ extension PhotosViewController: UIViewControllerTransitioningDelegate {
 }
 
 // MARK: - PhotoSearchResultsController
-extension PhotoSearchResultsController: UIViewControllerTransitioningDelegate {
+extension PhotoSearchResultsViewController: UIViewControllerTransitioningDelegate {
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         return PhotoDetailPresentationController(presentedViewController: presented, presenting: presenting)
     }

@@ -11,7 +11,7 @@ private let cellReuseIdentifier = "PhotoCell"
 
 class PhotosViewController: UITableViewController, PhotoDetailPresentable {
     
-    lazy var searchResultsController = PhotoSearchResultsController()
+    lazy var searchResultsController = PhotoSearchResultsViewController()
     var photos: [UnsplashPhoto] { photosLoader.photos }
     var photosLoader: PhotosLoader = PhotosLoader()
     
@@ -37,10 +37,12 @@ class PhotosViewController: UITableViewController, PhotoDetailPresentable {
     
     func setupSearchController() {
         let searchController = UISearchController(searchResultsController: searchResultsController)
+        searchController.delegate = self
         searchController.searchResultsUpdater = self
         searchController.searchBar.delegate = self
         searchController.searchBar.placeholder = "Search photos"
         
+        searchResultsController.searchController = searchController
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         
@@ -105,17 +107,21 @@ class PhotosViewController: UITableViewController, PhotoDetailPresentable {
 }
 
 // MARK: - UISearchBarDelegate
-extension PhotosViewController: UISearchResultsUpdating, UISearchBarDelegate {
+extension PhotosViewController: UISearchControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate {
     func updateSearchResults(for searchController: UISearchController) {
         searchController.searchResultsController?.view.isHidden = false
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let query = searchBar.text, query.count > 0 else { return }
-        searchResultsController.photosLoader = PhotosLoader(query: query)
+        searchResultsController.searchPhotos(query)
     }
     
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchResultsController.photosLoader = nil
+    func willPresentSearchController(_ searchController: UISearchController) {
+        searchResultsController.recentQueries = RecentSearchQuery.shared.recentQueries
+    }
+    
+    func didDismissSearchController(_ searchController: UISearchController) {
+        searchResultsController.clearSearchResults()
     }
 }

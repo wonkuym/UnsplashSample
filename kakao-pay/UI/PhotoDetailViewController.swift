@@ -90,7 +90,7 @@ class PhotoDetailViewController: UIViewController {
     
     func setupTopView() {
         let closeButton = UIButton.init(type: .system)
-        closeButton.setTitle("Close", for: .normal)
+        closeButton.setImage(UIImage(named: "close"), for: .normal)
         closeButton.addTarget(self, action: #selector(closeTapped(_:)), for: .touchUpInside)
         
         let topView = UIView()
@@ -134,6 +134,7 @@ class PhotoDetailViewController: UIViewController {
         if needsScrollToInitialPhotoIndex,
            let initialPhotoIndexPath = initialPhotoIndexPath {
             needsScrollToInitialPhotoIndex = false
+            setTitleForPhoto(at: initialPhotoIndexPath)
             collectionView.scrollToItem(at: initialPhotoIndexPath,at: .centeredHorizontally, animated: false)
         }
     }
@@ -152,6 +153,11 @@ class PhotoDetailViewController: UIViewController {
             closeHandler(currentIndexPath.row)
         }
     }
+    
+    func setTitleForPhoto(at indexPath: IndexPath) {
+        let photo = photos[indexPath.row]
+        titleLabel.text = photo.user.name
+    }
 }
 
 // MARK: - UICollectionViewDataSource
@@ -164,13 +170,17 @@ extension PhotoDetailViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath)
         let photo = photos[indexPath.row]
         
-        titleLabel.text = photo.user.name
-        
         if let cell = cell as? PhotoDetailCell {
             cell.photo = photo
         }
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if let visibleIndexPath = collectionView.indexPathsForVisibleItems.last {
+            setTitleForPhoto(at: visibleIndexPath)
+        }
     }
 }
 
