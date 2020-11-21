@@ -15,6 +15,17 @@
 		9563ADA62564E5660023F576 /* PhotoSearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9563ADA42564E5660023F576 /* PhotoSearchResultsViewController.swift */; };
 		9563ADB925657DB00023F576 /* PhotosLoadStategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9563ADB825657DB00023F576 /* PhotosLoadStategy.swift */; };
 		9563ADBE25657DEA0023F576 /* PhotosLoader+Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9563ADBD25657DEA0023F576 /* PhotosLoader+Notifications.swift */; };
+		956671F525696C2E00C15F58 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957E5E09256357640078ECF2 /* Request.swift */; };
+		956671F925696C3100C15F58 /* UnsplashAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957E5E042562DE1F0078ECF2 /* UnsplashAPI.swift */; };
+		956671FD25696C3300C15F58 /* UnsplashPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958715CC25639868001C46C5 /* UnsplashPhoto.swift */; };
+		9566720125696C3600C15F58 /* UnsplashSearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F18F8C2564BAF900EEBACC /* UnsplashSearchResults.swift */; };
+		9566720625696C6C00C15F58 /* RequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9566720525696C6C00C15F58 /* RequestTests.swift */; };
+		9566720E2569764F00C15F58 /* PhotosLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9566720D2569764F00C15F58 /* PhotosLoaderTests.swift */; };
+		956672152569767F00C15F58 /* PhotosLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957188F82563D781009B5785 /* PhotosLoader.swift */; };
+		956672192569768200C15F58 /* PhotosLoader+Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9563ADBD25657DEA0023F576 /* PhotosLoader+Notifications.swift */; };
+		9566721D2569768500C15F58 /* PhotosLoadStategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9563ADB825657DB00023F576 /* PhotosLoadStategy.swift */; };
+		9566722225697CF600C15F58 /* RecentSearchQueryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9566722125697CF600C15F58 /* RecentSearchQueryTests.swift */; };
+		9566722925697D0D00C15F58 /* RecentSearchQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9536D2D02568D146000946EA /* RecentSearchQuery.swift */; };
 		957188F92563D781009B5785 /* PhotosLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957188F82563D781009B5785 /* PhotosLoader.swift */; };
 		9571890A2563D9DB009B5785 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957189082563D9DB009B5785 /* PhotoCell.swift */; };
 		9571890B2563D9DB009B5785 /* PhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 957189092563D9DB009B5785 /* PhotoCell.xib */; };
@@ -27,7 +38,6 @@
 		957E5DBD2562D8850078ECF2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 957E5DBB2562D8850078ECF2 /* Main.storyboard */; };
 		957E5DBF2562D88A0078ECF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 957E5DBE2562D88A0078ECF2 /* Assets.xcassets */; };
 		957E5DC22562D88A0078ECF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 957E5DC02562D88A0078ECF2 /* LaunchScreen.storyboard */; };
-		957E5DCD2562D88A0078ECF2 /* kakao_payTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957E5DCC2562D88A0078ECF2 /* kakao_payTests.swift */; };
 		957E5DD82562D88B0078ECF2 /* kakao_payUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957E5DD72562D88B0078ECF2 /* kakao_payUITests.swift */; };
 		957E5E052562DE1F0078ECF2 /* UnsplashAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957E5E042562DE1F0078ECF2 /* UnsplashAPI.swift */; };
 		957E5E0A256357640078ECF2 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957E5E09256357640078ECF2 /* Request.swift */; };
@@ -70,6 +80,9 @@
 		9563ADA42564E5660023F576 /* PhotoSearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSearchResultsViewController.swift; sourceTree = "<group>"; };
 		9563ADB825657DB00023F576 /* PhotosLoadStategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosLoadStategy.swift; sourceTree = "<group>"; };
 		9563ADBD25657DEA0023F576 /* PhotosLoader+Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotosLoader+Notifications.swift"; sourceTree = "<group>"; };
+		9566720525696C6C00C15F58 /* RequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTests.swift; sourceTree = "<group>"; };
+		9566720D2569764F00C15F58 /* PhotosLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosLoaderTests.swift; sourceTree = "<group>"; };
+		9566722125697CF600C15F58 /* RecentSearchQueryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchQueryTests.swift; sourceTree = "<group>"; };
 		957188F82563D781009B5785 /* PhotosLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosLoader.swift; sourceTree = "<group>"; };
 		957189082563D9DB009B5785 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		957189092563D9DB009B5785 /* PhotoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoCell.xib; sourceTree = "<group>"; };
@@ -85,7 +98,6 @@
 		957E5DC12562D88A0078ECF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		957E5DC32562D88A0078ECF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		957E5DC82562D88A0078ECF2 /* kakao-payTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "kakao-payTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		957E5DCC2562D88A0078ECF2 /* kakao_payTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kakao_payTests.swift; sourceTree = "<group>"; };
 		957E5DCE2562D88A0078ECF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		957E5DD32562D88B0078ECF2 /* kakao-payUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "kakao-payUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		957E5DD72562D88B0078ECF2 /* kakao_payUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kakao_payUITests.swift; sourceTree = "<group>"; };
@@ -211,8 +223,10 @@
 		957E5DCB2562D88A0078ECF2 /* kakao-payTests */ = {
 			isa = PBXGroup;
 			children = (
-				957E5DCC2562D88A0078ECF2 /* kakao_payTests.swift */,
 				958715E42563A2E0001C46C5 /* PaginationTests.swift */,
+				9566720525696C6C00C15F58 /* RequestTests.swift */,
+				9566720D2569764F00C15F58 /* PhotosLoaderTests.swift */,
+				9566722125697CF600C15F58 /* RecentSearchQueryTests.swift */,
 				957E5DCE2562D88A0078ECF2 /* Info.plist */,
 			);
 			path = "kakao-payTests";
@@ -404,9 +418,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				957E5DCD2562D88A0078ECF2 /* kakao_payTests.swift in Sources */,
+				956671F925696C3100C15F58 /* UnsplashAPI.swift in Sources */,
+				9566720E2569764F00C15F58 /* PhotosLoaderTests.swift in Sources */,
+				9566720625696C6C00C15F58 /* RequestTests.swift in Sources */,
+				9566722225697CF600C15F58 /* RecentSearchQueryTests.swift in Sources */,
+				956671FD25696C3300C15F58 /* UnsplashPhoto.swift in Sources */,
 				958715ED2563A365001C46C5 /* Pagination.swift in Sources */,
+				9566722925697D0D00C15F58 /* RecentSearchQuery.swift in Sources */,
+				956671F525696C2E00C15F58 /* Request.swift in Sources */,
+				9566720125696C3600C15F58 /* UnsplashSearchResults.swift in Sources */,
+				956672152569767F00C15F58 /* PhotosLoader.swift in Sources */,
+				956672192569768200C15F58 /* PhotosLoader+Notifications.swift in Sources */,
 				958715E52563A2E0001C46C5 /* PaginationTests.swift in Sources */,
+				9566721D2569768500C15F58 /* PhotosLoadStategy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -36,7 +36,7 @@ class PhotosLoader {
         self.isLoading = false
     }
     
-    func loadNext(_ completion: @escaping () -> Void = {}) {
+    func loadNext(_ completion: @escaping (Result<[UnsplashPhoto], Error>) -> Void = { _ in }) {
         guard !isLoading && !isReachedEnd else { return }
         
         isLoading = true
@@ -46,13 +46,12 @@ class PhotosLoader {
                 self?.photos.append(contentsOf: data.photos)
                 self?.isReachedEnd = data.isReachedEnd
                 NotificationCenter.default.post(name: PhotosLoader.didLoadNewPhotosNotification, object: nil)
+                completion(.success(data.photos))
             case .failure(let error):
-                debugPrint(error)
-                break
+                completion(.failure(error))
             }
             
             self?.isLoading = false
-            completion()
         }
     }
     

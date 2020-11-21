@@ -83,7 +83,7 @@ class Request<T> {
         self.pendingTask = nil
     }
     
-    private func makeURLRequest() -> URLRequest? {
+    func makeURLRequest() -> URLRequest? {
         guard let url = URL(string: urlStringWithQuery) else {
             return nil
         }
@@ -96,6 +96,7 @@ class Request<T> {
     
     private func getQueryString() -> String {
         return parameters
+            .sorted(by: { $0.key < $1.key })
             .map { element in
                 let encodedValue: String
                 if let stringValue = element.value as? String {

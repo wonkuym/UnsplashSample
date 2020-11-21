@@ -22,7 +22,7 @@ class UnsplashAPI {
     }
     
     // https://unsplash.com/documentation#search-photos
-    func searchPhoto(_ pagination: Pagination) -> Request<UnsplashSearchResults> {
+    func searchPhotos(_ pagination: Pagination) -> Request<UnsplashSearchResults> {
         return makeRequest("/search/photos", parameters: pagination.toAllParameters())
     }
     

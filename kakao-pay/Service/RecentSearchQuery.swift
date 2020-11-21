@@ -7,11 +7,12 @@
 
 import Foundation
 
-private let limitCount: Int = 7
+private let defaultLimitCount: Int = 7
 private let userDefaultsKey = "RecentSearchQuery"
 
 class RecentSearchQuery {
     static let shared = RecentSearchQuery()
+    var limitCount = defaultLimitCount
     
     var recentQueries: [String] {
         return UserDefaults.standard.stringArray(forKey: userDefaultsKey) ?? []

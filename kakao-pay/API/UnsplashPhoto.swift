@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct UnsplashPhoto: Codable {
+struct UnsplashPhoto: Codable, Equatable {
     let id: String
     let createdAt: String
     let updatedAt: String
@@ -15,6 +15,10 @@ struct UnsplashPhoto: Codable {
     let height: Int
     let urls: UnsplashPhotoUrls
     let user: UnsplashUser
+    
+    static func == (lhs: UnsplashPhoto, rhs: UnsplashPhoto) -> Bool {
+        return lhs.id == rhs.id
+    }
 }
 
 struct UnsplashPhotoUrls: Codable {

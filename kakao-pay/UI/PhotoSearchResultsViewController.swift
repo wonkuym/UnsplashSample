@@ -83,7 +83,7 @@ class PhotoSearchResultsViewController: UITableViewController, PhotoDetailPresen
     func loadNext() {
         guard let photosLoader = photosLoader else { return }
         
-        photosLoader.loadNext { [weak self] in
+        photosLoader.loadNext { [weak self] _ in
             self?.loadedSearchResults = true
             self?.tableView.reloadData()
         }

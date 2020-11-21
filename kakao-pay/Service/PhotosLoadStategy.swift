@@ -41,7 +41,7 @@ class PhotosSearchStategy: PhotosLoadStategy {
     }
     
     func loadNext(_ completion: @escaping (PhotosLoadResult) -> Void) {
-        let photosRequest = UnsplashAPI.shared.searchPhoto(page)
+        let photosRequest = UnsplashAPI.shared.searchPhotos(page)
         
         photosRequest.execute { [weak self] result in
             guard let self = self else { return }
