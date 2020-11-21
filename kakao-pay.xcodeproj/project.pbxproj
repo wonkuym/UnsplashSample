@@ -31,7 +31,6 @@
 		957E5DD82562D88B0078ECF2 /* kakao_payUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957E5DD72562D88B0078ECF2 /* kakao_payUITests.swift */; };
 		957E5E052562DE1F0078ECF2 /* UnsplashAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957E5E042562DE1F0078ECF2 /* UnsplashAPI.swift */; };
 		957E5E0A256357640078ECF2 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957E5E09256357640078ECF2 /* Request.swift */; };
-		958715C825638BC4001C46C5 /* RequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958715C725638BC4001C46C5 /* RequestTests.swift */; };
 		958715CD25639868001C46C5 /* UnsplashPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958715CC25639868001C46C5 /* UnsplashPhoto.swift */; };
 		958715D225639882001C46C5 /* Pagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958715D125639882001C46C5 /* Pagination.swift */; };
 		958715D725639954001C46C5 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958715D625639954001C46C5 /* PhotosViewController.swift */; };
@@ -93,7 +92,6 @@
 		957E5DD92562D88B0078ECF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		957E5E042562DE1F0078ECF2 /* UnsplashAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashAPI.swift; sourceTree = "<group>"; };
 		957E5E09256357640078ECF2 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
-		958715C725638BC4001C46C5 /* RequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTests.swift; sourceTree = "<group>"; };
 		958715CC25639868001C46C5 /* UnsplashPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashPhoto.swift; sourceTree = "<group>"; };
 		958715D125639882001C46C5 /* Pagination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pagination.swift; sourceTree = "<group>"; };
 		958715D625639954001C46C5 /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
@@ -216,7 +214,6 @@
 				957E5DCC2562D88A0078ECF2 /* kakao_payTests.swift */,
 				958715E42563A2E0001C46C5 /* PaginationTests.swift */,
 				957E5DCE2562D88A0078ECF2 /* Info.plist */,
-				958715C725638BC4001C46C5 /* RequestTests.swift */,
 			);
 			path = "kakao-payTests";
 			sourceTree = "<group>";
@@ -409,7 +406,6 @@
 			files = (
 				957E5DCD2562D88A0078ECF2 /* kakao_payTests.swift in Sources */,
 				958715ED2563A365001C46C5 /* Pagination.swift in Sources */,
-				958715C825638BC4001C46C5 /* RequestTests.swift in Sources */,
 				958715E52563A2E0001C46C5 /* PaginationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

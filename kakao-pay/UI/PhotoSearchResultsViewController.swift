@@ -26,7 +26,11 @@ class PhotoSearchResultsViewController: UITableViewController, PhotoDetailPresen
     }
     
     weak var searchController: UISearchController?
-    var recentQueries: [String] = []
+    var recentQueries: [String] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     var photos: [UnsplashPhoto] { photosLoader?.photos ?? [] }
     var photosLoader: PhotosLoader? {
         didSet {
