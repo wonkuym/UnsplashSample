@@ -26,19 +26,22 @@ class PhotoSearchResultsController: UITableViewController, PhotoDetailPresentabl
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(photosDidLoad(_:)),
-            name: PhotosLoader.didLoadNewPhotosNotification,
-            object: nil
-        )
+        setupNotificationCenter()
     }
     
     func setupTableView() {
         tableView.register(UINib(nibName: cellReuseIdentifier, bundle: nil), forCellReuseIdentifier: cellReuseIdentifier)
         tableView.separatorColor = .white
         tableView.separatorStyle = .singleLine
+    }
+    
+    func setupNotificationCenter() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(photosDidLoad(_:)),
+            name: PhotosLoader.didLoadNewPhotosNotification,
+            object: nil
+        )
     }
     
     @objc func photosDidLoad(_ notification: Notification) {

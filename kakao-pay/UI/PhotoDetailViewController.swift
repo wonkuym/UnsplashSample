@@ -15,7 +15,24 @@ struct DetailEnterContext {
     let closeHandler: (Int) -> Void
 }
 
-class PhotoDetailViewController: UICollectionViewController {
+class PhotoDetailViewController: UIViewController {
+    lazy var collectionView: UICollectionView = {
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.itemSize = view.frame.size
+        flowLayout.scrollDirection = .horizontal
+        flowLayout.minimumInteritemSpacing = 0
+        flowLayout.minimumLineSpacing = 0
+        
+        return UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+    }()
+    
+    lazy var titleLabel: UILabel = {
+        let titleLabel = UILabel()
+        titleLabel.textColor = .white
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 17)
+        return titleLabel
+    }()
+    
     var enterContext: DetailEnterContext? {
         didSet {
             needsScrollToInitialPhotoIndex = enterContext?.selectedIndex != nil
@@ -45,27 +62,74 @@ class PhotoDetailViewController: UICollectionViewController {
         super.viewDidLoad()
         
         setupCollectionView()
+        setupNotificationCenter()
+        setupTopView()
         
         modalPresentationCapturesStatusBarAppearance = true
+        panGestureInteractionController = PanGestureInteractionController(viewController: self)
         
+        collectionView.reloadData()
+    }
+    
+    func setupCollectionView() {
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.backgroundColor = .black
+        collectionView.isPagingEnabled = true
+        collectionView.register(UINib(nibName: cellReuseIdentifier, bundle: nil), forCellWithReuseIdentifier: cellReuseIdentifier)
+        
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(collectionView)
+        NSLayoutConstraint.activate([
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+        ])
+    }
+    
+    func setupTopView() {
+        let closeButton = UIButton.init(type: .system)
+        closeButton.setTitle("Close", for: .normal)
+        closeButton.addTarget(self, action: #selector(closeTapped(_:)), for: .touchUpInside)
+        
+        let topView = UIView()
+        topView.backgroundColor = .clear
+        topView.addSubview(closeButton)
+        topView.addSubview(titleLabel)
+        view.addSubview(topView)
+        
+        topView.translatesAutoresizingMaskIntoConstraints = false
+        closeButton.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            topView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            topView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            topView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            topView.heightAnchor.constraint(equalToConstant: 40),
+            
+            closeButton.leadingAnchor.constraint(equalTo: topView.leadingAnchor, constant: 8),
+            closeButton.topAnchor.constraint(equalTo: topView.topAnchor),
+            closeButton.heightAnchor.constraint(equalTo: topView.heightAnchor),
+            
+            titleLabel.centerXAnchor.constraint(equalTo: topView.centerXAnchor),
+            titleLabel.topAnchor.constraint(equalTo: topView.topAnchor),
+            titleLabel.heightAnchor.constraint(equalTo: topView.heightAnchor)
+        ])
+    }
+    
+    func setupNotificationCenter() {
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(photosDidLoad(_:)),
             name: PhotosLoader.didLoadNewPhotosNotification,
             object: nil
         )
-        
-        panGestureInteractionController = PanGestureInteractionController(viewController: self)
     }
     
-    func setupCollectionView() {
-        collectionView.register(UINib(nibName: cellReuseIdentifier, bundle: nil), forCellWithReuseIdentifier: cellReuseIdentifier)
-        collectionView.backgroundColor = .black
-        collectionView.isPagingEnabled = true
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
         if needsScrollToInitialPhotoIndex,
            let initialPhotoIndexPath = initialPhotoIndexPath {
@@ -78,36 +142,47 @@ class PhotoDetailViewController: UICollectionViewController {
         collectionView.reloadData()
     }
     
+    @objc func closeTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     func handleEnterContextClose() {
         if  let closeHandler = enterContext?.closeHandler,
             let currentIndexPath = collectionView.indexPathsForVisibleItems.first {
             closeHandler(currentIndexPath.row)
         }
     }
-    
-    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        guard let lastCell = collectionView.visibleCells.last,
-              let lastCellIndexPath = collectionView.indexPath(for: lastCell) else {
-            return
-        }
-        
-        enterContext?.photosLoader.loadNextIfNeeded(reachedIndex: lastCellIndexPath.row)
-    }
-    
-    // MARK: - UICollectionViewDataSource
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+}
+
+// MARK: - UICollectionViewDataSource
+extension PhotoDetailViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return photos.count
     }
     
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath)
         let photo = photos[indexPath.row]
+        
+        titleLabel.text = photo.user.name
         
         if let cell = cell as? PhotoDetailCell {
             cell.photo = photo
         }
         
         return cell
+    }
+}
+
+// MARK: - UICollectionViewDelegate
+extension PhotoDetailViewController: UICollectionViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard let lastCell = collectionView.visibleCells.last,
+              let lastCellIndexPath = collectionView.indexPath(for: lastCell) else {
+            return
+        }
+        
+        enterContext?.photosLoader.loadNextIfNeeded(reachedIndex: lastCellIndexPath.row)
     }
 }
 

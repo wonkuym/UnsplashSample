@@ -24,13 +24,7 @@ class PhotosViewController: UITableViewController, PhotoDetailPresentable {
         
         setupTableView()
         setupSearchController()
-        
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(photosDidLoad(_:)),
-            name: PhotosLoader.didLoadNewPhotosNotification,
-            object: nil
-        )
+        setupNotificationCenter()
         
         photosLoader.loadNext()
     }
@@ -51,6 +45,15 @@ class PhotosViewController: UITableViewController, PhotoDetailPresentable {
         navigationItem.hidesSearchBarWhenScrolling = false
         
         definesPresentationContext = true
+    }
+    
+    func setupNotificationCenter() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(photosDidLoad(_:)),
+            name: PhotosLoader.didLoadNewPhotosNotification,
+            object: nil
+        )
     }
     
     @objc func photosDidLoad(_ notification: Notification) {

@@ -12,13 +12,7 @@ protocol PhotoDetailPresentable {
 
 extension PhotoDetailPresentable where Self: UITableViewController, Self: UIViewControllerTransitioningDelegate {
     func showDetail(_ enterContext: DetailEnterContext) {
-        let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.itemSize = view.frame.size
-        flowLayout.scrollDirection = .horizontal
-        flowLayout.minimumInteritemSpacing = 0
-        flowLayout.minimumLineSpacing = 0
-        
-        let detailVC = PhotoDetailViewController(collectionViewLayout: flowLayout)
+        let detailVC = PhotoDetailViewController()
         detailVC.enterContext = enterContext
         detailVC.modalPresentationStyle = .custom
         detailVC.transitioningDelegate = self

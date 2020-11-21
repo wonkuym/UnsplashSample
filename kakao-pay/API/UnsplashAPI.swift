@@ -11,6 +11,9 @@ class UnsplashAPI {
     static let shared = UnsplashAPI()
     
     let baseUrlString = "https://api.unsplash.com"
+    
+    // Public Authentication AccessKey
+    // https://unsplash.com/documentation#public-authentication
     let unsplashAccessKey = "EPmrvI5d1ijfTL_TqAkYgItzMxxErflorkC933VhL2Q"
     
     // https://unsplash.com/documentation#photos
