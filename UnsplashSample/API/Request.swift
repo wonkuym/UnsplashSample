@@ -93,7 +93,6 @@ class Request<T> {
         return urlRequest
     }
     
-    
     private func getQueryString() -> String {
         return parameters
             .sorted(by: { $0.key < $1.key })

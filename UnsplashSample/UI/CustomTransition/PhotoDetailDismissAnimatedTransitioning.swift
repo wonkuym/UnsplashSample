@@ -39,7 +39,7 @@ class PhotoDetailDismissAnimatedTransitioning: NSObject, UIViewControllerAnimate
         NSLayoutConstraint.activate([
             yConstraint,
             completeTopConstraint,
-            imageView.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
+            imageView.centerXAnchor.constraint(equalTo: containerView.centerXAnchor)
         ])
         
         fromVC.view.isHidden = true

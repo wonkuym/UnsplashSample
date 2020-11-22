@@ -44,7 +44,6 @@ extension ImageLoader {
     }
 }
 
-
 fileprivate extension UnsplashPhoto {
     var urlString: String {
         return urls.small

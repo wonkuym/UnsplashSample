@@ -10,10 +10,10 @@ import UIKit
 class PhotoDetailPresentationController: UIPresentationController {
 
     lazy var backgroundView: UIView = {
-        let v = UIView()
-        v.backgroundColor = .black
-        v.translatesAutoresizingMaskIntoConstraints = false
-        return v
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = .black
+        backgroundView.translatesAutoresizingMaskIntoConstraints = false
+        return backgroundView
     }()
 
     override var shouldRemovePresentersView: Bool {
@@ -38,7 +38,7 @@ class PhotoDetailPresentationController: UIPresentationController {
             backgroundView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
             backgroundView.topAnchor.constraint(equalTo: containerView.topAnchor),
             backgroundView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-            backgroundView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
+            backgroundView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
         ])
     }
 

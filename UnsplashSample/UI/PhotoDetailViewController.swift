@@ -84,7 +84,7 @@ class PhotoDetailViewController: UIViewController {
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.topAnchor.constraint(equalTo: view.topAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
     
@@ -135,7 +135,7 @@ class PhotoDetailViewController: UIViewController {
            let initialPhotoIndexPath = initialPhotoIndexPath {
             needsScrollToInitialPhotoIndex = false
             setTitleForPhoto(at: initialPhotoIndexPath)
-            collectionView.scrollToItem(at: initialPhotoIndexPath,at: .centeredHorizontally, animated: false)
+            collectionView.scrollToItem(at: initialPhotoIndexPath, at: .centeredHorizontally, animated: false)
         }
     }
     
