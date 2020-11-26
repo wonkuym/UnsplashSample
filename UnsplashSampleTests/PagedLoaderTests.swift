@@ -1,5 +1,5 @@
 //
-//  PhotosLoaderTests.swift
+//  PagedLoaderTests.swift
 //  UnsplashSampleTests
 //
 //  Created by wonkyum kim on 2020/11/22.
@@ -7,12 +7,12 @@
 
 import XCTest
 
-class PhotosLoaderTests: XCTestCase {
+class PagedLoaderTests: XCTestCase {
     
     let timeout = 10.0
     
     func testShouldGetPhotos() throws {
-        let photosLoader = PhotosLoader()
+        let photosLoader = PagedLoader.newPhotosLoader()
         
         let expectation1 = self.expectation(description: "get first page photos")
         var firstPageResult: Result<[UnsplashPhoto], Error>?
@@ -44,6 +44,6 @@ class PhotosLoaderTests: XCTestCase {
         var allPhotos: [UnsplashPhoto] = []
         allPhotos.append(contentsOf: firstPagePhotos!)
         allPhotos.append(contentsOf: secondPagePhotos!)
-        XCTAssertEqual(allPhotos, photosLoader.photos)
+        XCTAssertEqual(allPhotos, photosLoader.items)
     }
 }

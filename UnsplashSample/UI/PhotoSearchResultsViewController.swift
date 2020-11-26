@@ -31,8 +31,8 @@ class PhotoSearchResultsViewController: UITableViewController, PhotoDetailPresen
             tableView.reloadData()
         }
     }
-    var photos: [UnsplashPhoto] { photosLoader?.photos ?? [] }
-    var photosLoader: PhotosLoader? {
+    var photos: [UnsplashPhoto] { photosLoader?.items ?? [] }
+    var photosLoader: PagedLoader<UnsplashPhoto>? {
         didSet {
             loadNext()
         }
@@ -60,7 +60,7 @@ class PhotoSearchResultsViewController: UITableViewController, PhotoDetailPresen
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(photosDidLoad(_:)),
-            name: PhotosLoader.didLoadNewPhotosNotification,
+            name: didLoadNewItemsNotification,
             object: nil
         )
     }
@@ -76,7 +76,7 @@ class PhotoSearchResultsViewController: UITableViewController, PhotoDetailPresen
     }
     
     func searchPhotos(_ query: String) {
-        photosLoader = PhotosLoader(query: query)
+        photosLoader = PagedLoader.newPhotosSearchLoader(query: query)
         RecentSearchQuery.shared.addQeury(query)
     }
     

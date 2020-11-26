@@ -10,7 +10,7 @@ import UIKit
 private let cellReuseIdentifier = "PhotoDetailCell"
 
 struct DetailEnterContext {
-    let photosLoader: PhotosLoader
+    let photosLoader: PagedLoader<UnsplashPhoto>
     let selectedIndex: Int
     let closeHandler: (Int) -> Void
 }
@@ -44,7 +44,7 @@ class PhotoDetailViewController: UIViewController {
         return IndexPath(row: selectedIndex, section: 0)
     }
     
-    var photos: [UnsplashPhoto] { enterContext?.photosLoader.photos ?? [] }
+    var photos: [UnsplashPhoto] { enterContext?.photosLoader.items ?? [] }
     var panGestureInteractionController: PanGestureInteractionController?
     
     var currentPhotoImage: UIImage? {
@@ -123,7 +123,7 @@ class PhotoDetailViewController: UIViewController {
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(photosDidLoad(_:)),
-            name: PhotosLoader.didLoadNewPhotosNotification,
+            name: didLoadNewItemsNotification,
             object: nil
         )
     }

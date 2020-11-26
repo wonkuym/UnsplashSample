@@ -12,8 +12,8 @@ private let cellReuseIdentifier = "PhotoCell"
 class PhotosViewController: UITableViewController, PhotoDetailPresentable {
     
     lazy var searchResultsController = PhotoSearchResultsViewController()
-    var photos: [UnsplashPhoto] { photosLoader.photos }
-    var photosLoader: PhotosLoader = PhotosLoader()
+    var photos: [UnsplashPhoto] { photosLoader.items }
+    var photosLoader: PagedLoader<UnsplashPhoto> = PagedLoader.newPhotosLoader()
     
     deinit {
         NotificationCenter.default.removeObserver(self)
@@ -53,7 +53,7 @@ class PhotosViewController: UITableViewController, PhotoDetailPresentable {
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(photosDidLoad(_:)),
-            name: PhotosLoader.didLoadNewPhotosNotification,
+            name: didLoadNewItemsNotification,
             object: nil
         )
     }
